@@ -26,12 +26,16 @@ class FirebaseDb {
       (event) {
         List<HistoryModel> model = [];
         DataSnapshot snapshot = event.snapshot;
-        List<dynamic> logs = snapshot.value;
-        logs.forEach((element) {
-          try {
-            model.add(HistoryModel.fromMap(element as Map<dynamic, dynamic>));
-          } catch (e) {}
-        });
+        Map<dynamic, dynamic> logs = snapshot.value;
+        try {
+          logs.forEach(
+            (key, value) {
+              try {
+                model.add(HistoryModel.fromMap(value as Map<dynamic, dynamic>));
+              } catch (e) {}
+            },
+          );
+        } catch (e) {}
         ctl.updateHistory(model);
       },
     );

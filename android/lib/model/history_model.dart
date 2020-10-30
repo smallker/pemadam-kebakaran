@@ -23,7 +23,7 @@ class HistoryModel {
   factory HistoryModel.fromMap(Map<dynamic, dynamic> json) => HistoryModel(
         status: json["status"],
         detail: json["detail"],
-        timestamp: json["timestamp"],
+        timestamp: int.tryParse(json["timestamp"]) * 1000,
       );
 
   Map<dynamic, dynamic> toMap() => {

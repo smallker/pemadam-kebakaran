@@ -121,7 +121,7 @@ class _HomePageState extends State<HomePage> {
                 title[snapshot.page],
               ),
               drawer: _navigationDrawer(),
-              body: body[snapshot.page],
+              body: Center(child: body[snapshot.page]),
             ),
           ),
         );

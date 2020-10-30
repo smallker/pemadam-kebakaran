@@ -4,13 +4,34 @@ import 'package:air_quality/widgets/pixel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 
-class NotificationPage extends StatelessWidget {
+class NotificationPage extends StatefulWidget {
+  @override
+  _NotificationPageState createState() => _NotificationPageState();
+}
+
+class _NotificationPageState extends State<NotificationPage> {
   Widget _header() {
     return Expanded(
       flex: 2,
       child: Container(
-        child: Image.asset(
-          'assets/nav_drawer.png',
+        margin: EdgeInsets.all(
+          Pixel.x * 2,
+        ),
+        padding: EdgeInsets.all(Pixel.x * 10),
+        child: Column(
+          children: [
+            Flexible(
+              flex: 3,
+              child: Image.asset('assets/icon.png'),
+            ),
+            Flexible(
+              flex: 1,
+              child: MyText(
+                text: 'Pemadam Kebakaran',
+                color: Colors.orange,
+              ),
+            )
+          ],
         ),
       ),
     );
@@ -32,23 +53,36 @@ class NotificationPage extends StatelessWidget {
             Expanded(
               flex: 5,
               child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.orange,
-                  borderRadius: BorderRadius.circular(
-                    Pixel.x * 5,
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.3),
-                      blurRadius: 3,
-                      spreadRadius: 3,
-                    ),
-                  ],
-                ),
                 child: GetBuilder<HistoryCtl>(
-                    init: HistoryCtl(),
-                    builder: (snapshot) {
+                  init: HistoryCtl(),
+                  builder: (snapshot) {
+                    print(snapshot.history.length);
+                    if (snapshot.history == null ||
+                        snapshot.history.length == 0) {
                       return Container(
+                        child: Center(
+                          child: MyText(
+                            text: 'Kosong',
+                            fontSize: Pixel.x * 7,
+                            color: Colors.orange,
+                          ),
+                        ),
+                      );
+                    } else
+                      return Container(
+                        decoration: BoxDecoration(
+                          color: Colors.orange,
+                          borderRadius: BorderRadius.circular(
+                            Pixel.x * 5,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.3),
+                              blurRadius: 3,
+                              spreadRadius: 3,
+                            ),
+                          ],
+                        ),
                         child: Center(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -83,7 +117,8 @@ class NotificationPage extends StatelessWidget {
                           ),
                         ),
                       );
-                    }),
+                  },
+                ),
               ),
             ),
             Expanded(

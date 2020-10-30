@@ -9,8 +9,24 @@ class StatusPage extends StatelessWidget {
     return Expanded(
       flex: 2,
       child: Container(
-        child: Image.asset(
-          'assets/nav_drawer.png',
+        margin: EdgeInsets.all(
+          Pixel.x * 2,
+        ),
+        padding: EdgeInsets.all(Pixel.x * 10),
+        child: Column(
+          children: [
+            Flexible(
+              flex: 3,
+              child: Image.asset('assets/icon.png'),
+            ),
+            Flexible(
+              flex: 1,
+              child: MyText(
+                text: 'Pemadam Kebakaran',
+                color: Colors.orange,
+              ),
+            )
+          ],
         ),
       ),
     );
