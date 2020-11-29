@@ -39,7 +39,7 @@ class StatusPage extends StatelessWidget {
   }) {
     return Container(
       width: Pixel.x * 70,
-      height: Pixel.y * 15,
+      height: Pixel.y * 12,
       margin: EdgeInsets.all(
         Pixel.x * 2,
       ),
@@ -67,7 +67,7 @@ class StatusPage extends StatelessWidget {
               child: Icon(
                 icon,
                 color: Colors.white,
-                size: Pixel.x * 15,
+                size: Pixel.x * 10,
               ),
             ),
           ),
@@ -85,14 +85,14 @@ class StatusPage extends StatelessWidget {
                     flex: 2,
                     child: MyText(
                       text: title,
-                      fontSize: Pixel.x * 6,
+                      fontSize: Pixel.x * 4,
                     ),
                   ),
                   Expanded(
                     flex: 3,
                     child: MyText(
                       text: subtitle,
-                      fontSize: Pixel.x * 10,
+                      fontSize: Pixel.x * 7,
                     ),
                   ),
                 ],
@@ -124,10 +124,16 @@ class StatusPage extends StatelessWidget {
                   ),
                   _sensorStatus(
                     icon: Icons.cloud,
-                    title: 'Sensor Asap',
+                    title: 'Sensor Gas',
                     subtitle: snapshot.status == null
                         ? 'Mati'
                         : snapshot.status.smoke,
+                  ),
+                  _sensorStatus(
+                    icon: Icons.fire_extinguisher,
+                    title: 'Sensor Api',
+                    subtitle:
+                        snapshot.status == null ? 'N/A' : snapshot.status.fire,
                   ),
                   _sensorStatus(
                     icon: Icons.info_outline,

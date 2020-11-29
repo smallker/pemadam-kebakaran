@@ -23,12 +23,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  audioplayers: ^0.17.0
   firebase_core: ^0.5.0+1
   firebase_database: ^4.1.1
   firebase_messaging: ^7.0.3
+  flutter_local_notifications: ^3.0.1+6
   get: ^3.15.0
   google_fonts: ^1.1.1
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
