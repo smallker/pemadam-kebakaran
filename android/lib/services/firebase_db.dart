@@ -37,7 +37,7 @@ class FirebaseDb {
           );
         } catch (e) {}
         model.sort((a, b) => a.timestamp.compareTo(b.timestamp));
-        model.reversed.toList();
+        // model.reversed.toList();
         ctl.updateHistory(model);
       },
     );

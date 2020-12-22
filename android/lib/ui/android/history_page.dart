@@ -39,6 +39,7 @@ class HistoryPage extends StatelessWidget {
       child: GetBuilder<HistoryCtl>(
           init: HistoryCtl(),
           builder: (snapshot) {
+            snapshot.history = snapshot.history.reversed.toList();
             return Container(
               width: Pixel.x * 90,
               height: Pixel.y * 40,
